@@ -64,6 +64,12 @@ ul {
   overflow-x: hidden;
 }
 
+.title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .add-task-container {
   position: relative;
   display: flex;
@@ -85,8 +91,8 @@ ul {
   border-radius: 15px;
   top: 4rem;
   box-shadow: 0px 10px 20px -15px black;
-  width: 20%;
-  min-width: 15rem;
+  width: 30%;
+  min-width: 20rem;
   height: 20rem;
   opacity: 0;
   visibility: hidden;
@@ -99,14 +105,16 @@ ul {
   top: 6rem;
 }
 
-.btn-close-window {
+.btn-close-window,
+.btn-delete {
   position: absolute;
   right: 10px;
   top: 10px;
   border-radius: 50%;
   background: none;
 }
-.btn-close-window:hover {
+.btn-close-window:hover,
+.btn-delete:hover {
   background: rgba(0, 0, 0, 0.1);
 }
 
@@ -129,11 +137,20 @@ ul {
 }
 
 .list-container h3 {
+  display: flex;
+  justify-content: center;
   text-align: center;
+  gap: 5px;
+  width: 100%;
   padding: 1rem;
 }
 
+.list-container span {
+  width: 1.7rem;
+}
+
 .list-item {
+  position: relative;
   background-color: rgba(229, 229, 229, 0.541);
   width: 15rem;
   padding: 1rem 1rem;
@@ -143,8 +160,8 @@ ul {
   transition: all 100ms;
 }
 
-.list-item:hover {
-  transform: translateY(-6px);
+.draggable {
+  cursor: grab;
 }
 
 .pending-list .list-item {
@@ -157,12 +174,14 @@ ul {
   border-left: 10px solid rgb(195, 57, 29);
 }
 
-.draggable {
-  cursor: grab;
-  margin-bottom: 10px;
+.pending-list .list-item:hover {
+  transform: translateY(-6px);
 }
-
-.draggable {
+.complete-list .list-item:hover {
+  transform: translateY(-6px);
+}
+.past-due-list .list-item:hover {
+  cursor: not-allowed;
 }
 
 ::-webkit-scrollbar {
@@ -196,6 +215,11 @@ ul {
     width: 12rem;
   }
 
+  .list-item {
+    width: max-content;
+    max-width: 35rem;
+  }
+
   ul {
     flex-direction: row;
     width: 100%;
@@ -204,10 +228,19 @@ ul {
   }
 }
 
-@media only screen and (max-width: 490px) {
+@media only screen and (max-width: 600px) {
   h1 {
     font-size: 2.4rem;
     letter-spacing: 0;
+  }
+}
+
+@media only screen and (max-width: 490px) {
+  .list-container h3 {
+    padding: 0;
+    rotate: -90deg;
+    width: 9rem;
+    height: 3rem;
   }
 
   .add-task-container {
