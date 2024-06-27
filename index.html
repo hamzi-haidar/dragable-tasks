@@ -10,6 +10,22 @@
     <header>
       <h1>TO DO LIST</h1>
     </header>
+    <section class="add-task-container">
+      <h3>Assign a task for someone and set the due date</h3>
+      <button class="btn-open-window">Assign a task</button>
+      <div class="form-window open">
+        <button class="btn-close-window">❌</button>
+        <h3>Create a task</h3>
+        <form>
+          <input type="text" placeholder="Name" name="name" id="name" />
+          <label for="task">Have to</label>
+          <input type="text" placeholder="task" name="task" id="task" />
+          <label for="date">Before</label>
+          <input type="date" name="date" id="date" min="2024-06-27" />
+          <button class="btn-submit">Add task</button>
+        </form>
+      </div>
+    </section>
     <script src="scripts/index.js"></script>
   </body>
 </html>
