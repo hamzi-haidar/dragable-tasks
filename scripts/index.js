@@ -25,8 +25,6 @@ const year = today.getFullYear();
 
 const formatedDate = year + "-" + month + "-" + day;
 
-console.log(formatedDate);
-
 dateInput.setAttribute("min", formatedDate);
 
 //close and open add task window
@@ -36,6 +34,12 @@ openBtn.addEventListener("click", () => {
 
 closeBtn.addEventListener("click", () => {
   formWindow.classList.remove("open");
+});
+
+document.addEventListener("click", (e) => {
+  if (!formWindow.contains(e.target) && e.target != openBtn) {
+    formWindow.classList.remove("open");
+  }
 });
 
 //gets tasks from local storage and add them to the dom
